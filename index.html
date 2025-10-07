@@ -67,8 +67,20 @@
 
         .nav-buttons {
             display: flex;
-            gap: 1rem;
+            gap: 0.75rem;
             align-items: center;
+        }
+
+        @media (max-width: 480px) {
+            .nav-buttons {
+                gap: 0.5rem;
+            }
+            
+            .nav-buttons .btn {
+                padding: 0.5rem 1rem;
+                font-size: 0.875rem;
+                white-space: nowrap;
+            }
         }
 
         .btn {
@@ -106,6 +118,12 @@
         .hero {
             padding: 8rem 2rem 5rem;
             text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 6rem 1.5rem 3rem;
+            }
         }
 
         .hero-container {
@@ -199,6 +217,13 @@
             padding: 0 2rem;
         }
 
+        @media (max-width: 768px) {
+            .video-demo {
+                margin: 3rem auto 0;
+                padding: 0 1rem;
+            }
+        }
+
         .video-placeholder {
             position: relative;
             border-radius: 16px;
@@ -206,6 +231,14 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
             background: linear-gradient(135deg, #f5f3ff, #fce7f3);
             aspect-ratio: 16/9;
+            width: 100%;
+        }
+
+        @media (max-width: 768px) {
+            .video-placeholder {
+                border-radius: 12px;
+                margin: 0 auto;
+            }
         }
 
         .video-placeholder-content {
@@ -643,13 +676,18 @@
                 font-size: 2rem;
             }
 
-            .nav-buttons {
-                gap: 0.5rem;
-            }
-
             .btn {
                 padding: 0.5rem 1rem;
                 font-size: 0.875rem;
+            }
+            
+            .hero-buttons {
+                padding: 0 1rem;
+            }
+            
+            .btn-large {
+                padding: 0.875rem 1.5rem;
+                font-size: 0.9rem;
             }
         }
     </style>
