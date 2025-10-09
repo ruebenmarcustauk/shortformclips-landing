@@ -413,37 +413,53 @@
 }
 
 @media (max-width: 768px) {
+    .video-demo {
+        margin: 2.5rem auto 0;
+        padding: 0 1rem;
+    }
+    
+    .video-placeholder {
+        min-height: 280px;
+    }
+    
     .logo-icon-large {
-        width: 36px;
-        height: 36px;
-        font-size: 20px;
-        border-radius: 12px;
+        width: 42px;
+        height: 42px;
+        font-size: 24px;
+        border-radius: 14px;
+        flex-shrink: 0;
     }
     
     .logo-text-large {
-        font-size: 0.95rem;
+        font-size: 1rem;
+        line-height: 1.2;
     }
     
     .video-cover-logo {
-        margin-bottom: 0.75rem;
-        gap: 0.35rem;
+        margin-bottom: 1rem;
+        gap: 0.4rem;
     }
     
     .play-button {
-        width: 44px;
-        height: 44px;
-        margin-bottom: 0.4rem;
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        min-height: 52px;
+        margin-bottom: 0.5rem;
+        flex-shrink: 0;
     }
     
     .play-icon {
-        width: 22px;
-        height: 22px;
+        width: 26px;
+        height: 26px;
+        margin-left: 2px;
     }
     
     .video-subtitle {
-        font-size: 0.75rem;
-        padding: 0 1rem;
-        line-height: 1.25;
+        font-size: 0.8rem;
+        padding: 0 1.5rem;
+        line-height: 1.3;
+        max-width: 90%;
     }
 }
 
