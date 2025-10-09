@@ -328,31 +328,83 @@
             color: #8b5cf6;
         }
 
-        .video-cover-decoration {
+        .animated-gradient-bg {
     position: absolute;
     inset: 0;
+    background: linear-gradient(
+        135deg,
+        #f5f3ff 0%,
+        #fce7f3 25%,
+        #e0e7ff 50%,
+        #fce7f3 75%,
+        #f5f3ff 100%
+    );
+    background-size: 400% 400%;
+    animation: gradientShift 8s ease infinite;
     pointer-events: none;
 }
 
-.floating-icon {
-    position: absolute;
-    font-size: 3rem;
-    opacity: 0.15;
-    animation: float 3s ease-in-out infinite;
+@keyframes gradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
 }
 
-@keyframes float {
+.video-cover-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    z-index: 1;
+    position: relative;
+}
+
+.logo-icon-large {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #ec4899, #8b5cf6);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 48px;
+    box-shadow: 0 20px 40px rgba(139, 92, 246, 0.3);
+    animation: logoFloat 3s ease-in-out infinite;
+}
+
+.logo-text-large {
+    font-size: 2rem;
+    font-weight: 800;
+    color: #1a1b26;
+    text-align: center;
+}
+
+@keyframes logoFloat {
     0%, 100% {
         transform: translateY(0px);
     }
     50% {
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
 }
 
 @media (max-width: 768px) {
-    .floating-icon {
-        font-size: 2rem;
+    .logo-icon-large {
+        width: 64px;
+        height: 64px;
+        font-size: 36px;
+    }
+    
+    .logo-text-large {
+        font-size: 1.5rem;
     }
 }
 
@@ -832,11 +884,10 @@
             Your browser does not support the video tag.
         </video>
         <div class="video-placeholder-content" id="videoOverlay">
-            <div class="video-cover-decoration">
-                <div class="floating-icon" style="top: 15%; left: 10%;">🎬</div>
-                <div class="floating-icon" style="top: 20%; right: 15%; animation-delay: 0.5s;">✨</div>
-                <div class="floating-icon" style="bottom: 20%; left: 15%; animation-delay: 1s;">🚀</div>
-                <div class="floating-icon" style="bottom: 15%; right: 10%; animation-delay: 1.5s;">📱</div>
+            <div class="animated-gradient-bg"></div>
+            <div class="video-cover-logo">
+                <div class="logo-icon-large">📹</div>
+                <span class="logo-text-large">Short Form Clips</span>
             </div>
             <div class="play-button" id="playButton">
                 <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24">
