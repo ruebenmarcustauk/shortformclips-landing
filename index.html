@@ -825,20 +825,26 @@
         </div>
 
         <!-- Video Demo -->
-<div class="video-placeholder-content" id="videoOverlay">
-    <div class="video-cover-decoration">
-        <div class="floating-icon" style="top: 15%; left: 10%;">🎬</div>
-        <div class="floating-icon" style="top: 20%; right: 15%; animation-delay: 0.5s;">✨</div>
-        <div class="floating-icon" style="bottom: 20%; left: 15%; animation-delay: 1s;">🚀</div>
-        <div class="floating-icon" style="bottom: 15%; right: 10%; animation-delay: 1.5s;">📱</div>
-    </div>
-    <div class="play-button" id="playButton">
-        <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24">
-            <path d="M8 5v14l11-7z"/>
-        </svg>
-    </div>
-    <p style="color: #6b7280; font-weight: 600; background: linear-gradient(135deg, #ec4899, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.125rem;">Watch how it works in 30 seconds</p>
-</div>
+<div class="video-demo" id="demo-video">
+    <div class="video-placeholder" id="videoContainer">
+        <video id="demoVideo" width="100%" style="border-radius: 16px; display: none;">
+            <source src="assets/homepagevid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-placeholder-content" id="videoOverlay">
+            <div class="video-cover-decoration">
+                <div class="floating-icon" style="top: 15%; left: 10%;">🎬</div>
+                <div class="floating-icon" style="top: 20%; right: 15%; animation-delay: 0.5s;">✨</div>
+                <div class="floating-icon" style="bottom: 20%; left: 15%; animation-delay: 1s;">🚀</div>
+                <div class="floating-icon" style="bottom: 15%; right: 10%; animation-delay: 1.5s;">📱</div>
+            </div>
+            <div class="play-button" id="playButton">
+                <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
+            </div>
+            <p style="color: #6b7280; font-weight: 600; background: linear-gradient(135deg, #ec4899, #8b5cf6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; font-size: 1.125rem;">Watch how it works in 30 seconds</p>
+        </div>
     </div>
 </div>
     </section>
