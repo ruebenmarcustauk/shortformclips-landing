@@ -10,3 +10,4 @@
 # Animated gradient video cover 1760002616
 # Mobile video cover fix 1760003672
 # Mobile spacing fix 1760003801
+# Video cover mobile compact fix 1760004298
