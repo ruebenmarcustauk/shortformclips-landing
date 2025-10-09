@@ -799,7 +799,7 @@
         <!-- Video Demo -->
 <div class="video-demo" id="demo-video">
     <div class="video-placeholder" id="videoContainer">
-        <video id="demoVideo" width="100%" style="border-radius: 16px;">
+        <video id="demoVideo" width="100%" style="border-radius: 16px; display: none;">
             <source src="assets/homepagevid.mp4" type="video/mp4">
             Your browser does not support the video tag.
         </video>
@@ -1091,7 +1091,7 @@
         </div>
     </div>
 
-    <script>
+   <script>
     // Video player functionality
     const videoContainer = document.getElementById('videoContainer');
     const demoVideo = document.getElementById('demoVideo');
@@ -1099,33 +1099,30 @@
     const playButton = document.getElementById('playButton');
 
     // Play video when overlay is clicked
-    videoContainer.addEventListener('click', function() {
+    videoContainer.addEventListener('click', function(e) {
         if (demoVideo.paused) {
+            // Show video and play
+            demoVideo.style.display = 'block';
             demoVideo.play();
             videoOverlay.style.opacity = '0';
             videoOverlay.style.pointerEvents = 'none';
-        } else {
-            demoVideo.pause();
-            videoOverlay.style.opacity = '1';
-            videoOverlay.style.pointerEvents = 'auto';
+            demoVideo.setAttribute('controls', 'controls');
         }
     });
 
-    // Show overlay when video ends
-    demoVideo.addEventListener('ended', function() {
+    // When video is paused, show overlay again
+    demoVideo.addEventListener('pause', function() {
         videoOverlay.style.opacity = '1';
         videoOverlay.style.pointerEvents = 'auto';
     });
 
-    // Show controls when video is playing
-    demoVideo.addEventListener('play', function() {
-        demoVideo.setAttribute('controls', 'controls');
-    });
-
-    demoVideo.addEventListener('pause', function() {
-        if (demoVideo.currentTime === 0) {
-            demoVideo.removeAttribute('controls');
-        }
+    // When video ends, hide it and show overlay
+    demoVideo.addEventListener('ended', function() {
+        demoVideo.style.display = 'none';
+        videoOverlay.style.opacity = '1';
+        videoOverlay.style.pointerEvents = 'auto';
+        demoVideo.currentTime = 0;
+        demoVideo.removeAttribute('controls');
     });
 
     // Modal functionality
