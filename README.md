@@ -11,3 +11,4 @@
 # Mobile video cover fix 1760003672
 # Mobile spacing fix 1760003801
 # Video cover mobile compact fix 1760004298
+# Mobile video cover tight layout 1760005320
