@@ -270,14 +270,21 @@
         }
 
         .video-placeholder {
-            position: relative;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-            background: linear-gradient(135deg, #f5f3ff, #fce7f3);
-            aspect-ratio: 16/9;
-            width: 100%;
-        }
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    background: linear-gradient(135deg, #f5f3ff, #fce7f3);
+    aspect-ratio: 16/9;
+    width: 100%;
+    cursor: pointer;
+}
+
+.video-placeholder video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
 
         @media (max-width: 768px) {
             .video-placeholder {
@@ -287,13 +294,15 @@
         }
 
         .video-placeholder-content {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-        }
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.3s ease;
+    pointer-events: auto;
+}
 
         .play-button {
             width: 80px;
@@ -788,23 +797,22 @@
         </div>
 
         <!-- Video Demo -->
-        <div class="video-demo" id="demo-video">
-            <div class="video-placeholder">
-                <div class="video-placeholder-content">
-                    <div class="play-button">
-                        <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24">
-                            <path d="M8 5v14l11-7z"/>
-                        </svg>
-                    </div>
-                    <p style="color: #6b7280; font-weight: 500;">Watch how it works in 30 seconds</p>
-                </div>
-                <!-- REPLACE THIS SECTION WITH YOUR VIDEO:
-                <video controls width="100%">
-                    <source src="your-demo-video.mp4" type="video/mp4">
-                </video>
-                -->
+<div class="video-demo" id="demo-video">
+    <div class="video-placeholder" id="videoContainer">
+        <video id="demoVideo" width="100%" style="border-radius: 16px;">
+            <source src="assets/homepagevid.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        <div class="video-placeholder-content" id="videoOverlay">
+            <div class="play-button" id="playButton">
+                <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M8 5v14l11-7z"/>
+                </svg>
             </div>
+            <p style="color: #6b7280; font-weight: 500;">Watch how it works in 30 seconds</p>
         </div>
+    </div>
+</div>
     </section>
 
     <!-- How It Works -->
@@ -1084,23 +1092,60 @@
     </div>
 
     <script>
-        function openModal() {
-            document.getElementById('termsModal').classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
+    // Video player functionality
+    const videoContainer = document.getElementById('videoContainer');
+    const demoVideo = document.getElementById('demoVideo');
+    const videoOverlay = document.getElementById('videoOverlay');
+    const playButton = document.getElementById('playButton');
 
-        function closeModal() {
-            document.getElementById('termsModal').classList.remove('active');
-            document.body.style.overflow = 'auto';
+    // Play video when overlay is clicked
+    videoContainer.addEventListener('click', function() {
+        if (demoVideo.paused) {
+            demoVideo.play();
+            videoOverlay.style.opacity = '0';
+            videoOverlay.style.pointerEvents = 'none';
+        } else {
+            demoVideo.pause();
+            videoOverlay.style.opacity = '1';
+            videoOverlay.style.pointerEvents = 'auto';
         }
+    });
 
-        // Close modal when clicking outside
-        window.onclick = function(event) {
-            const modal = document.getElementById('termsModal');
-            if (event.target === modal) {
-                closeModal();
-            }
+    // Show overlay when video ends
+    demoVideo.addEventListener('ended', function() {
+        videoOverlay.style.opacity = '1';
+        videoOverlay.style.pointerEvents = 'auto';
+    });
+
+    // Show controls when video is playing
+    demoVideo.addEventListener('play', function() {
+        demoVideo.setAttribute('controls', 'controls');
+    });
+
+    demoVideo.addEventListener('pause', function() {
+        if (demoVideo.currentTime === 0) {
+            demoVideo.removeAttribute('controls');
         }
-    </script>
+    });
+
+    // Modal functionality
+    function openModal() {
+        document.getElementById('termsModal').classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        document.getElementById('termsModal').classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+        const modal = document.getElementById('termsModal');
+        if (event.target === modal) {
+            closeModal();
+        }
+    }
+</script>
 </body>
 </html>
