@@ -1,0 +1,9 @@
+{
+  "redirects": [
+    {
+      "source": "/start",
+      "destination": "/?ref=start",
+      "permanent": false
+    }
+  ]
+}
